@@ -43,7 +43,7 @@
 		const life = inventors.reduce((total, inventor) => {
 			return total + (inventor.passed - inventor.year);
 		}, 0);
-		console.log(life);
+		//console.log(life);
 
 
 		// 5. Sort the inventors by years lived
@@ -53,7 +53,7 @@
 			return lastGuy > nextGuy ? -1 : 1;
 		});
 
-		console.table(oldest);
+		//console.table(oldest);
 
 
 		// 6. create a list of boulewards in Paris that contain 'de' anywhere in the name
@@ -67,9 +67,27 @@
 
 		// 7. Sort the people alphabetically by last_name
 		
-		const lastNameSort = people.sort((lastOne, NewOne) => {
-			console.log(lastOne);
-		})	
+		const alpha = people.sort((lastOne, nextOne) => {
+			const [aFirst, aLast] = lastOne.split(', ');
+			const [bFirst, bLast] = nextOne.split(', ');
+			return aFirst > bFirst ? 1 : -1;
+		});
+
+		// 8. Reduce Exercise 
+		// Sum up the instances of each of these
+
+		const data = ['car', 'car', 'van', 'bike', 'bike', 'rickshaw', 'van', 'bus'];
+		const transportation = data.reduce(function(obj, item) {
+			if (!obj[item]) {
+				obj[item] = 0;
+			}
+			obj[item]++;
+			return obj;
+		}, {});
+
+		console.log(transportation);
+
+		
 	</script>
 </head>
 <body>
