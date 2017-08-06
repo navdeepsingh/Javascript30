@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flex Panels Image Gallery</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Amatic+SC">
+	<style type="text/css">
+		html {
+			box-sizing: border-box;
+			background: #ffc600;
+			font-family: 'Amatic SC', cursive;
+			font-size: 20px;
+			font-weight: 200;
+			color: white;
+		}
+		body {
+			margin: 0; 
+		}
+		*, *:before, *:after {
+			box-sizing: inherit;
+		}
+		.panels {
+			min-height: 100vh;
+			overflow: hidden;
+			display: flex;
+		}
+		
+		.panel {
+			background: #6B0F9C;
+			box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.1);
+			color: white;
+			flex: 1;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			background-size: cover;
+			background-position: center;
+			display: flex;
+			flex-direction: column;
+			transition: 
+				font-size 0.7s cubic-bezier(0.26, 0.08, 0.38, 1.6),
+				flex 0.7s cubic-bezier(0.26, 0.08, 0.38, 1.6),
+				background 0.2s;
+		}
+		/* Flex Items */
+		.panel > * {
+			
+			width: 100%;
+			margin: 0;
+			transition: transform 0.5s;
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: row;
+			font-size: 30px;
+			text-shadow: 0 0 4px rgba(0,0,0,0.72);
+		}
+		.panel > *:first-child {
+			transform: translateY(-100%);
+		}
+		.panel.active > *:first-child {
+			transform: translateY(0%);
+		}
+		.panel > *:last-child {
+			transform: translateY(100%);
+		}
+		.panel.active > *:last-child {
+			transform: translateY(0%);
+		}
+
+		.panel.open {
+			font-size: 42px;
+			flex: 2;
+		}
+		.panel > p:nth-child(2) {
+			font-size: 4em;
+		}
+
+		.panel1 {
+			background: url('https://images.unsplash.com/photo-1429734160945-4f85244d6a5a?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=6877ce046416aadbefe33500f90ec782') no-repeat;
+		}
+		.panel2 {
+			background: url('https://images.unsplash.com/photo-1469150730171-8b17e75be16f?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=b5b48739c731e3670dd14cbee71e79e3') no-repeat;
+		}
+		.panel3 {
+			background: url('https://images.unsplash.com/photo-1498020153934-4373d80ef4a4?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=1f7d4e7957d693093214a50bb61e1a9e') no-repeat;
+		}
+		.panel4{
+			background: url('https://images.unsplash.com/photo-1469478187851-e252b5239de5?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=8fe7ad2526a88ff8bdcbbc599430857f') no-repeat;
+		}
+		.panel5{
+			background: url('https://images.unsplash.com/photo-1469504512102-900f29606341?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=4f2a246162bfaf665b3245d4f830ea7e') no-repeat;
+		}
+	</style>
+</head>
+<body>
+<div class="panels">
+	<div class="panel panel1">
+		<p>Hey</p>
+		<p>Let's</p>
+		<p>Dance</p>
+	</div>
+	<div class="panel panel2">
+		<p>Give</p>
+		<p>Take</p>
+		<p>Receive</p>
+	</div>
+	<div class="panel panel3">
+		<p>Experience</p>
+		<p>It</p>
+		<p>Today</p>
+	</div>
+	<div class="panel panel4">
+		<p>Never</p>
+		<p>Give</p>
+		<p>Up</p>
+	</div>
+	<div class="panel panel5">
+		<p>Love</p>
+		<p>Every</p>
+		<p>Moment</p>
+	</div>
+</div>
+<script type="text/javascript">
+	const panels = document.querySelectorAll('.panel');
+	panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+	panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+
+	function toggleOpen() {
+		//console.log('Hello')
+		this.classList.toggle('open');
+		this.classList.toggle('active');
+	}
+
+	function toggleActive(e) {
+		console.log(e.propertyName);
+	}
+</script>
+</body>
+</html>
