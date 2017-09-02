@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Console Tools</title>
+</head>
+<body>
+
+<p onclick="makeGreen()">Make me Green</p>
+
+</body>
+<script type="text/javascript">
+	function makeGreen () {
+		const p = document.querySelector('p');
+		p.style.color = '#BADA55';
+		p.style.fontSize = 'xx-large';
+	}
+
+	// log
+	console.log('Hello console');
+
+	// warn
+	console.warn('I warn you');
+
+	// error
+	console.error('Oops! You doing wrong');
+
+	// info
+	console.info('Each year Tigers population is decreasing');
+
+	// testing
+	console.assert(1===2, 'I am wrong');
+
+	// clear
+	console.clear();
+
+	// Viewing DOM elements
+	console.log('p');
+	console.dir('p');
+
+	// Grouping together
+
+
+	// counting
+
+
+	// timing
+	console.time('fetching data');
+	fetch('https://api.github.com/users/navdeepsingh')
+		.then(data => data.json())
+		.then(data => {
+			console.timeEnd('fetching data');
+			console.log(data);
+		})
+</script>
+</html>
