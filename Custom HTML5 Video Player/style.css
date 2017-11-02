@@ -1,0 +1,18 @@
+body {
+	background-color: pink;
+}
+.player {
+	width: 500px;
+	height: 340px;
+	margin: 100px auto;
+	background: teal;
+	position: relative;
+}
+
+.player__controls {
+	position: absolute;
+	width: 100%;
+	height: 30px;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5)
+}
