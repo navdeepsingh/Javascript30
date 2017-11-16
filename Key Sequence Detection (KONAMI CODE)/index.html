@@ -8,12 +8,13 @@
 <body>
 <script type="text/javascript">
 	const pressed = [];
-	const secretCode = 'navdeep';
+	const secretCode = 'manroop';
 	window.addEventListener('keyup', function(e) {
-		console.log(e.key);
+		console.log(pressed.length);
+		console.log(secretCode.length);
 		pressed.push(e.key);
 		pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
-		console.log(pressed);
+		console.log('Spliced: ', pressed);
 
 		if ( pressed.join('').includes(secretCode) ) {
 			console.log('DING DING!');
