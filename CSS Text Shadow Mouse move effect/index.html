@@ -1,0 +1,68 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>CSS Text Shadow Mouse move effect</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style type="text/css">
+    	body {
+    		margin: 0;
+    		padding: 0;
+    		overflow: hidden;
+    	}
+    	.hero {
+    		width: 100vw;
+    		height: 100vh;
+    		text-align: center;
+    		display: flex;
+    		justify-content: center;
+    		align-items: center;
+    	}
+
+    	h1 {
+    		font-size: 10em;
+    		text-shadow: 10px 10px 0 rgba(0,0,0,1);
+    	}
+    </style>
+  </head>
+  <body>
+  	<div class="hero">
+  		<h1 contenteditable>🥦 Brocolli</h1>
+  	</div>
+
+  	<script type="text/javascript">
+  		const hero = document.querySelector('.hero');
+  		const text = hero.querySelector('h1');
+  		const walk = 100; // 100px;
+
+
+  		function shadow(e) {
+  			const { offsetWidth: width, offsetHeight: height } = hero;
+  			let { offsetX: x, offsetY: y } = e;
+
+  			if (this != e.target) {
+  				x = x + e.target.offsetLeft;
+  				y = y + e.target.offsetTop;
+  			}
+
+  			const xWalk = Math.round(x / width * walk) - (walk / 2);
+  			const yWalk = Math.round(y / height * walk) - (walk / 2);
+
+  			text.style.textShadow = `
+  				${xWalk}px ${yWalk}px 0 rgba(255, 0, 255, 0.7),
+  				${xWalk * -1}px ${yWalk}px 0 rgba(0, 255, 255, 0.7),
+  				${xWalk}px ${yWalk * -1}px 0 rgba(255, 255, 0, 0.7),
+  				${yWalk}px ${xWalk}px 0 rgba(0, 255, 0, 0.7)
+  			`;
+
+  			console.log(xWalk, yWalk);
+  		}
+
+  		hero.addEventListener('mousemove', shadow);
+  	</script>
+  </body>
+</html>
