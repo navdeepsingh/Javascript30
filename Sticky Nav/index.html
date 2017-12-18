@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sticky Nav</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        #wrapper {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serifl;
+            font-size: 14px;
+        }
+        header {
+            width: 100%;
+        }
+        #banner {
+            height: 400px;
+        }
+        #banner img {
+            max-width: 100%;
+            height: 100%;
+            object-fit: cover;
+            width: auto;
+        }
+        #main {
+            background: #000;
+            margin-top: -5px;
+            width: 100%;
+            top: 0;
+        }
+        #main ul {
+            display: flex;
+            flex-direction: row;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #main ul li {
+            flex: 1 1 30px;
+            padding: 20px 10px;
+            text-align: center;
+            
+        }
+        #main ul li a {
+            color: aqua;
+            text-align: center;
+            text-decoration: none;
+        }
+        #main ul li.logo{
+            max-width:0px;
+            transition: all 0.2s;
+            overflow: hidden;
+            text-indent: -9999px;
+        }
+        .logo a {
+            color: blueviolet;
+            text-shadow: -10px 10px 5px rgba(255,0,255,0.5),
+                         10px -10px 5px rgba(0,0,255,0.5),
+                         -10px -10px 5px rgba(0,255,255,0.5)
+        }
+        .sticky-nav #main{
+            position: fixed;
+            box-shadow: 0 5px 5px rgba(0,0,0, 0.5);
+        }
+        .sticky-nav #main ul li.logo{
+            max-width:200px;
+            text-indent: 0px;
+        }
+        section {
+            padding: 50px 0;
+            width: 100%;            
+        }
+        section article {
+            width: 600px;
+            margin: 0 auto;
+        }
+    </style>    
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="banner"><img src="https://source.unsplash.com/SshYpuf607g/1900x400" alt=""></div>
+            <nav id="main">
+                <ul>
+                    <li class="logo"><a href="">NSWebStudio</a></li>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">History</a></li>
+                    <li><a href="">Company Structure</a></li>
+                    <li><a href="">Careers</a></li>
+                    <li><a href="">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <article>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac maximus libero. Quisque ornare odio a placerat vulputate. Suspendisse sagittis, tellus quis mattis consectetur, turpis arcu sagittis ex, id faucibus mauris enim id tellus. Aliquam eget scelerisque augue, at volutpat nunc. Sed eros ligula, commodo et leo ac, malesuada commodo ex. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque non elementum ex.</p>
+                <p>Donec id tortor eu nulla convallis volutpat non a nunc. Vivamus eu porta magna. Sed id metus turpis. Maecenas eros ex, sodales blandit nisl in, rutrum interdum urna. Nunc in nisl nec augue molestie rutrum. Nunc efficitur sem commodo molestie venenatis. Morbi facilisis convallis maximus. Nunc hendrerit nunc ut pretium convallis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam dignissim dictum varius. Phasellus vitae purus ac mi consequat varius sit amet ac felis. Integer et ullamcorper nunc. Praesent sed diam nec dolor porta pretium. Vivamus ut iaculis magna.</p>                
+                <p>Mauris quis elit non magna pretium facilisis. Ut maximus ipsum maximus orci cursus pretium. Phasellus vel aliquam sem. Vestibulum taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus eu tortor lobortis, egestas libero at, dictum eros. Nunc commodo imperdiet eleifend. Cras egestas dictum mi, id rutrum mi faucibus in. Quisque quis tellus id est venenatis scelerisque commodo a lectus. Integer ultricies auctor erat, in luctus odio egestas sed. Integer nec tellus non ex faucibus commodo quis ultricies sapien. Vivamus in orci cursus, eleifend risus id, viverra nulla.</p>
+                <p>Aenean faucibus ultrices mattis. Phasellus luctus gravida lectus eu semper. Ut nec bibendum diam, quis auctor lacus. Vivamus in scelerisque nibh. Nam eu suscipit enim, at vehicula velit. Donec quis dolor libero. Vestibulum vestibulum porta purus, id tristique nibh ultricies at. Vestibulum ac laoreet nunc, id vehicula elit. Pellentesque nunc augue, tempus et finibus vestibulum, consequat a sapien. Sed eu volutpat nisi.</p>
+                <p>Etiam non ante varius, lacinia felis nec, blandit nibh. Fusce vitae venenatis ipsum. Etiam volutpat sollicitudin odio. Sed ultricies eros in urna consectetur aliquet. Nullam in condimentum turpis. Aenean metus erat, ultrices non venenatis eu, dignissim quis ex. In interdum risus augue, et iaculis est suscipit et. Integer at finibus ex, molestie accumsan nunc.</p>
+                <p>Vivamus auctor pellentesque nisl, non blandit mi placerat sed. Fusce commodo porttitor sodales. Mauris rhoncus quam vel laoreet ornare. Nullam vehicula arcu at mollis rutrum. Fusce et dolor quis elit scelerisque tincidunt. Nam dapibus hendrerit dolor, varius porttitor quam. Vestibulum lorem lacus, porta nec posuere tempor, feugiat id orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed vehicula vestibulum ipsum nec placerat. Curabitur sagittis dapibus lorem, et consequat ex efficitur a. Proin vel sapien suscipit, cursus libero ut, rhoncus mi. Pellentesque luctus suscipit dignissim. Proin mollis ac sapien a dictum. Curabitur a eros convallis, rutrum nisl consectetur, rhoncus nibh. Vivamus sit amet scelerisque mi. Phasellus eget nisl metus.</p>
+                <p>Vivamus blandit leo eu ornare molestie. Aenean euismod mollis enim, in iaculis erat dapibus in. Etiam augue nunc, sagittis ut consectetur eget, feugiat a nibh. Donec interdum quam a aliquam fermentum. Morbi ullamcorper mollis mauris. Phasellus vel lorem elit. Aliquam interdum auctor metus non tincidunt. Sed vitae lacus eu eros pulvinar efficitur eu nec quam. In molestie mi tellus, eget vulputate ex pulvinar egestas. Duis facilisis porta erat, nec placerat dui. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In non placerat leo. Aliquam in ex nec magna molestie eleifend eu a nisl. Etiam placerat tempor massa. Ut vitae urna ultricies, rutrum magna non, tincidunt sem. Donec eleifend nibh enim, vulputate molestie ante placerat vel.</p>
+                <p>Maecenas dignissim, purus ut tristique sagittis, neque dui malesuada nisl, et tincidunt velit nulla ut mauris. Pellentesque nibh libero, volutpat ut ligula non, rhoncus faucibus arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec lorem ligula, laoreet nec eros tincidunt, tincidunt dignissim lacus. Sed eu nunc vitae tellus cursus malesuada nec ac libero. In iaculis velit purus, quis fringilla velit fringilla et. Nulla congue, felis nec finibus vulputate, leo elit semper dolor, suscipit venenatis lorem erat sit amet magna.</p>
+                <p>Pellentesque molestie nulla enim, in facilisis quam suscipit non. Aenean pharetra sapien dolor, eget suscipit massa sollicitudin ac. Ut vel euismod lorem. In urna massa, condimentum in augue vitae, tempor sodales ante. Etiam vel nibh ultrices, condimentum ante at, dignissim lacus. Phasellus a commodo lectus. Vestibulum laoreet nulla id augue mattis, ac vestibulum augue sagittis. Donec ut dignissim odio. Maecenas vulputate ut massa quis sollicitudin. Nullam ut tempus quam. Maecenas et imperdiet odio. Cras sit amet metus ac enim venenatis viverra eget a neque. Etiam a purus non tortor convallis porttitor eu eu eros. Nam quis consectetur diam. Donec non mattis diam. Phasellus sem ex, molestie ac dignissim accumsan, vulputate in ligula.</p>
+                <p>Praesent at urna pellentesque, sagittis turpis sit amet, vulputate nunc. Nullam malesuada auctor rutrum. Nulla mollis orci ut arcu ullamcorper viverra. Aenean a nunc lacus. Cras eget malesuada orci. Pellentesque in neque quis orci euismod viverra nec in orci. Nam id posuere purus. In lobortis laoreet ornare. Donec bibendum tellus ipsum, ut tincidunt quam molestie a. In hac habitasse platea dictumst. Donec ut faucibus metus.</p>
+            </article>
+        </section>
+
+    </div>
+    <script>
+        const nav = document.querySelector('#main');
+        const topOfNav = nav.offsetTop;
+        const navHeight = nav.offsetHeight;
+
+        function stickyNav(e) {
+            console.log(window.scrollY);
+            if (window.scrollY >= topOfNav) {
+                document.body.style.paddingTop = navHeight + 'px';
+                document.body.classList.add('sticky-nav');
+            } else {
+                document.body.style.paddingTop = '0px';
+                document.body.classList.remove('sticky-nav');
+            }
+        }
+        
+        document.addEventListener('scroll', stickyNav);
+    </script>
+</body>
+</html>
