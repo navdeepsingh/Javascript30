@@ -1,12 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Event Capture, Propogation, Bubbling and once</title>
+    <title>Understanding Javascript's Capture</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <style>
+ABC
+        html {
+            box-sizing: border-box;
+        }
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+        div {
+            width: 100%;
+            padding: 100px; 
+        }
+        .one {
+            background: thistle;
+        }
+        .two {
+            background: mistyrose;
+        }
+        .three {
+            background: coral;
+        }
+
+    </style>
 </head>
 <body>
-    
+
+    <div class="one">
+        <div class="two">
+            <div class="three"></div>
+        </div>
+    </div>
+    <button>Click me</button>
+
+
+    <script>
+        const divs = document.querySelectorAll('div');
+        const button =  document.querySelector('button');
+
+        function logText(e) {
+            console.log(this.classList.value);
+            e.stopPropagation(); // stop bubbling            
+        }
+
+        divs.forEach(div => div.addEventListener('click', logText, {
+            capture: true,
+            once: true
+        }));
+
+        button.addEventListener('click', () => {
+            console.log('Clickeddd!!')
+        }, {
+            once: true
+        });
+    </script>
 </body>
 </html>
