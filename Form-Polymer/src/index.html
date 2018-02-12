@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <title>Quiz - One Big, Ugly Form - Polymer</title>
+		<link rel="stylesheet" href="css/styles.css">
+		<script>
+			// Only load Web Component polyfill if necessary and then load content
+			// Thanks to Rob Dodson's talk at Chrome Dev Summit 2015
+			var webComponentsSupported = ('registerElement' in document
+				&& 'import' in document.createElement('link')
+				&& 'content' in document.createElement('template'));
+
+			if (!webComponentsSupported) {
+				var script = document.createElement('script');
+				script.async = true;
+				script.src = '../bower_components/webcomponentsjs/webcomponents-lite.min.js';
+				script.onload = loadPolymerElements;
+				document.head.appendChild(script);
+			} else {
+				loadPolymerElements();
+			};
+
+			function loadPolymerElements() {
+				var link = document.createElement('link');
+				link.rel = 'import';
+				link.href = 'polymer-elements/elements.html'
+				link.onload = loadContent;
+				document.head.appendChild(link);
+			};
+
+			// In an actual app, this would normally be an AJAX request for JSON to be injected into
+			// template app compontents. However, in this case I just hard coded the content.
+			function loadContent() {
+				var req = new XMLHttpRequest();
+				req.open('GET', 'content.html');
+				req.addEventListener('load', function () {
+					// Add Polymer specific classes to the body
+					document.body.classList.add('fullbleed', 'layout', 'vertical');
+					document.body.innerHTML = this.responseText;
+					loadScripts();
+				});
+				req.send();
+			};
+
+			// In an actual app, you'd need much more robust logic to determine when and how specific
+			// scripts are injected into the page.
+			function loadScripts() {
+				var scripts = [
+					{
+						src: 'js/app.js'
+					}, {
+						src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDBdsoKK0wPlfMXjhNEv9y6juA_T2Er0Ek&signed_in=true&libraries=places&callback=initAutocomplete',
+						attrs: ['async', 'defer']
+					}
+				];
+				scripts.forEach(function (s) {
+				  var script = document.createElement('script');
+				  script.src = s.src;
+				  if (s.attrs) {
+					  s.attrs.forEach(function (a) {
+					    script[a] = true;
+					  });
+				  };
+				  document.body.appendChild(script);
+				});
+			};
+		</script>
+	</head>
+	<body>
+		<!--
+			This skeleton renders immediately but disappears when page content arrives.
+			It's a quick, easy way to let users know that the page has started to load.
+		-->
+		<style>
+			body {
+				margin: 0px;
+			}
+			header {
+			  position: fixed;
+			  display: block;
+			  height: 64px;
+			  min-width: 100%;
+			  font-size: 1.5em;
+			  background: #3f51b5;;
+			  color: #fff;
+			}
+
+			.main {
+			  background: #fafafa;
+			}
+		</style>
+			<header></header>
+		  <div class="main"></div>
+	</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Meet Up Event Planner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />  
+</head>
+<body>
+  <div class="frame">
+    <div class="panel">
+      <div class="header">
+        <div class="menu-icon">
+          <div class="dash-top"></div>
+          <div class="dash-bottom"></div>
+          <div class="circle"></div>
+        </div>
+        <span class="title">Create Account</span>
+        <input type="text" class="search-input" placeholder="Search ...">
+        <div class="fa fa-search search-icon"></div>
+      </div>
+  
+      <div class="form">
+        <form action="" role="create-account-form">
+          <div class="row">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" autofocus>
+          </div>
+          <div class="row">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+          </div>
+          <div class="row">
+            <label for="name">Password</label>
+            <input type="password" id="password" name="password">
+          </div>
+          <div class="row">
+            <button type="button">CANCEL</button>
+            <button type="submit" class="submit">SUBMIT</button>
+          </div>
+        </form>
+      </div>
+    </div>  
+  
+    <div class="menu">
+      <ul>
+        <li>
+          <span class="fa fa-dashboard"></span>Dashboard</li>
+        <li>
+          <span class="fa fa-user"></span>Create Account</li>
+        <li>
+          <span class="fa fa-bell"></span>Create Event</li>
+        <li>
+          <span class="fa fa-comments"></span>Accounts</li>        
+      </ul>
+    </div>
+  
+  </div>
+  <script type="text/javascript">
+    const menuIcon = document.querySelector('.menu-icon');
+    const panel = document.querySelector('.panel');
+    const menu = document.querySelector('.menu');
+    menuIcon.addEventListener('click', function () {
+      panel.classList.toggle('show-menu');
+      menu.classList.toggle('active');
+    });
+
+    /*
+    * Submit Code
+    */
+    const button = document.querySelector('button.submit');
+    const name = document.querySelector('#name');
+    const email = document.querySelector('#email');
+    const password = document.querySelector('#password');
+    button.addEventListener('click', function(e) {
+      console.log(name.value);
+      if (name.value === '') {
+        name.setCustomValidity('Name is required');
+        return false;
+      } else if (email.value === '') {
+        email.setCustomValidity('Email is required');
+        return false;
+      } else if (password.value === '') {
+        password.setCustomValidity('Password is required');
+        return false;
+      } 
+    })
+  </script>
+</body>
+</html>
