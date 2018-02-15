@@ -238,6 +238,10 @@ body{
   -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
 }
+.menu li a{
+  color: #93B2CD;
+  text-decoration: none;
+}
 .menu li:hover {
   color: #fff;
   background: #385269;
@@ -260,15 +264,14 @@ body{
   overflow: hidden;
   display: flex;
 }
-.form .row > *{
-  flex: 1 0 auto;
+.form .row > div{
+  flex: 1 1 100px;
 }
-.form .row label {
-  flex-basis: 100px
+.form .row > div:last-child{
+  flex: 10 1 100px;
 }
-.form .row input{
-  padding: 5px;
-  width: 250px;
+.form .row input {
+  display: block;
 }
 .form .row button {
   padding: 5px;
@@ -276,9 +279,28 @@ body{
 }
 form .row button[type='submit'] {
   background: #5F98CD;
+  border: 1px solid black;
 }
 .form .row button:last-child {
   margin-right: 0px;
+}
+.notification {  
+  color: black;
+  margin-bottom: 10px;
+  display: none;
+}
+.notification .success {
+  padding: 10px;
+  background: lightgreen;
+  border: 1px solid green;
+  opacity: 0;
+  transition: all 2s ease-in;
+}
+.notification .error{
+  background: lightcoral;
+  border: 1px solid red;
+  opacity: 0;
+  transition: all 2s ease-in;
 }
 @-webkit-keyframes here-am-i {
   from {

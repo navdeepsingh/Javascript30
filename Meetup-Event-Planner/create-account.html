@@ -22,18 +22,30 @@
       </div>
   
       <div class="form">
-        <form action="" role="create-account-form">
+        <form action="" role="create-account-form" id="create-account-form">
+          <div class="notification"></div>
           <div class="row">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" autofocus>
+            <div class="label"><label for="name">Name*</label></div>
+            <div class="input">
+              <input type="text" id="name" name="name" autofocus>
+            </div>            
           </div>
           <div class="row">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email">
+            <div class="label">
+              <label for="email">Email*</label>
+            </div>
+            <div class="input">
+              <input type="email" id="email" name="email">
+            </div>
           </div>
           <div class="row">
-            <label for="name">Password</label>
-            <input type="password" id="password" name="password">
+            <div class="label">
+              <label for="password">Password*</label>
+            </div>            
+            <div class="input">
+              <input type="password" id="password" name="password" aria-describedby="hint">            
+              <small id="hint">Password must contain atleast one Capital character, small character, digit</small>
+            </div>
           </div>
           <div class="row">
             <button type="button">CANCEL</button>
@@ -46,46 +58,23 @@
     <div class="menu">
       <ul>
         <li>
-          <span class="fa fa-dashboard"></span>Dashboard</li>
+          <span class="fa fa-dashboard"></span>
+          <a href="index.html">Dashboard</a>
+        </li>
         <li>
-          <span class="fa fa-user"></span>Create Account</li>
+          <span class="fa fa-user"></span>
+          <a href="create-account.html">Create Account</a>
+        </li>
         <li>
-          <span class="fa fa-bell"></span>Create Event</li>
+          <span class="fa fa-bell"></span>
+          <a href="create-event.html">Create Event</a>
+        </li>
         <li>
-          <span class="fa fa-comments"></span>Accounts</li>        
+          <span class="fa fa-comments"></span>Accounts</li>
       </ul>
     </div>
   
   </div>
-  <script type="text/javascript">
-    const menuIcon = document.querySelector('.menu-icon');
-    const panel = document.querySelector('.panel');
-    const menu = document.querySelector('.menu');
-    menuIcon.addEventListener('click', function () {
-      panel.classList.toggle('show-menu');
-      menu.classList.toggle('active');
-    });
-
-    /*
-    * Submit Code
-    */
-    const button = document.querySelector('button.submit');
-    const name = document.querySelector('#name');
-    const email = document.querySelector('#email');
-    const password = document.querySelector('#password');
-    button.addEventListener('click', function(e) {
-      console.log(name.value);
-      if (name.value === '') {
-        name.setCustomValidity('Name is required');
-        return false;
-      } else if (email.value === '') {
-        email.setCustomValidity('Email is required');
-        return false;
-      } else if (password.value === '') {
-        password.setCustomValidity('Password is required');
-        return false;
-      } 
-    })
-  </script>
+<script src="script.js"></script>
 </body>
 </html>
