@@ -44,18 +44,22 @@ if (submitAccount !== null ) {
 
     if (name.value !== '' && name.value !== '' && name.value !== '') {
       const user = {
-        name: name,
-        email: email,
-        password: password
+        name: name.value,
+        email: email.value,
+        password: password.value
       }
 
-      localStorage.setItem('user', user);
+      localStorage.setItem('user', JSON.stringify(user));
+      notification.innerHTML = '<div class="success">User account is successfully created.</div>';
+      notification.style.display = 'block';
+      setTimeout(function () {
+        document.querySelector('.success').style.opacity = 1;
+      }, 1); 
+      
+      name.value = email.value = password.value = '';
+      event.preventDefault();
     }
-    notification.innerHTML = '<div class="success">User account is successfully created.</div>';
-    notification.style.display = 'block';
-    setTimeout(function(){
-      document.querySelector('.success').style.opacity = 1;
-    }, 1);    
+      
   }
 }
 
