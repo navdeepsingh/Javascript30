@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#FFFFFF"/>
+    <title>PWA Hello World</title>
+    <link rel="stylesheet" type="text/css" href="/styles/app.css">
+    <link rel="manifest" href="manifest.json">
+  </head>
+  <body>
+    <div class="frame">
+      <div class="center">
+            <div class="profile">
+                <div class="image">
+                    <div class="circle-1"></div>
+                    <div class="circle-2"></div>
+                    <img src="/images/icon-512x512.jpg" width="150" height="150" alt="Navdeep Singh">
+                </div>
+                <div class="name">Navdeep Singh</div>
+                <div class="job">UI/UX Developer</div>
+                <p class="hello">"HELLO WORLD"</p>
+            </div>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCqwFbV3J6uDaH6qGFZlMEptumEzsRQv-M",
+        authDomain: "pwa-hello-world-7127b.firebaseapp.com",
+        databaseURL: "https://pwa-hello-world-7127b.firebaseio.com",
+        projectId: "pwa-hello-world-7127b",
+        storageBucket: "pwa-hello-world-7127b.appspot.com",
+        messagingSenderId: "165974926428"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script>
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+          .then(function() {
+                console.log('Service Worker Registered');
+          });
+      }
+    </script>
+    <script>
+      const messaging = firebase.messaging();
+      messaging.requestPermission()
+      .then(function() {
+        console.log('Notification permission granted.');
+        return messaging.getToken();
+      })
+      .then(function(token) {
+        console.log(token);
+      })
+      .catch(function(err) {
+        console.log('Unable to get permission to notify.', err);
+      })
+    </script>
+  </body>
+</html>
